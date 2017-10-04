@@ -4,7 +4,7 @@
 [Java_8_recipes git repo](https://github.com/kousen/java_8_recipes)
 
 #### Lambda Expression
-    - lambda can access local variable outside of it owns scope but it can not modify it.                   
+- lambda can access local variable outside of it owns scope but it can not modify it.                   
 
                         
 ```java
@@ -38,10 +38,10 @@ total = nums.stream()
 ```                      
 
 #### Functional interface
-    - only a single abstract method in it. i.e: `Runnable` is functional interface because `void	run()` is the only abstract method in it.
-    * lambda can only assigned to functional interfaces
-    * The `@FunctionalInterface` annotation is optional, therefore it doesn't need to be annotate for interface.
-    * All functional interface belong to `java.util.function package`.
+- only a single abstract method in it. i.e: `Runnable` is functional interface because `void	run()` is the only abstract method in it.
+* lambda can only assigned to functional interfaces
+* The `@FunctionalInterface` annotation is optional, therefore it doesn't need to be annotate for interface.
+* All functional interface belong to `java.util.function package`.
 
 ```java
 // Optional
@@ -49,8 +49,8 @@ total = nums.stream()
 public interface Runnable
 ```
 
-    - Types of interface from `java.util.function` package
-        - Supplier: no argument and return a single result
+- Types of interface from `java.util.function` package
+    - Supplier: no argument and return a single result
 
 ```java
 // Is a supplier
@@ -62,9 +62,9 @@ public Integer getCount(){
 Supplier<String> i  = () -> "hello world";
 ```
 
-        Its instance method reference `myClass::getCount` is an instance of `Supplier<Integer>`
+Its instance method reference `myClass::getCount` is an instance of `Supplier<Integer>`
 
-        - Consumer: takes arguments and returns nothing
+- Consumer: takes arguments and returns nothing
 
 ```java
 public void setCount(int count){
@@ -72,9 +72,9 @@ public void setCount(int count){
 }
 ```
 
-        Its instance method reference `myClass::setCount` is an instance of `Consumer<Integer>` and `IntConsumer`.
+Its instance method reference `myClass::setCount` is an instance of `Consumer<Integer>` and `IntConsumer`.
 
-        - Function: takes an argument of one type, and returns another. Also call a transformation.
+- Function: takes an argument of one type, and returns another. Also call a transformation.
 
 ```java
 public Integer getCount(){
@@ -82,9 +82,9 @@ public Integer getCount(){
 }
 ```
 
-        Its class method reference `MyClass::getCount` is an instance of `Function<MyClass,Integer>` and `ToIntFunction<MyClass>`.
+Its class method reference `MyClass::getCount` is an instance of `Function<MyClass,Integer>` and `ToIntFunction<MyClass>`.
 
-        - Predicate: evaluate a condition and return boolean.
+- Predicate: evaluate a condition and return boolean.
 
 ```java
 // example 1
@@ -95,8 +95,8 @@ Predicate<Employee> isAgeMoreThan(Integer age) {
 s -> s.length % 2 == 0;
 ```
 
-    * Method Reference: shorthand syntax for a lambda expression that executes just ONE method.
-        - can call with static, instance method and also constructor method reference `ClassName::new` (Supplier)
+* Method Reference: shorthand syntax for a lambda expression that executes just ONE method.
+    - can call with static, instance method and also constructor method reference `ClassName::new` (Supplier)
 
 ```java
 // Syntax: Object :: methodName
@@ -107,7 +107,7 @@ Consumer<String> c = System.out::println;
 ```
 
 #### Java 8 Interface
-    * can have default method and static method
+- can have default method and static method
 
 ```java
 @FunctionalInterface
@@ -125,27 +125,27 @@ public interface MyInterface {
 }
 ```
 
-    - Conflict between `class` methods and `interface` (default or static) method
-        - class methods always win (overrided)
+- Conflict between `class` methods and `interface` (default or static) method
+    - class methods always win (overrided)
 
 #### `Stream()` is LAZY
 
-    - A sequence of elements supporting sequential and parallel aggregate operations.
-              
-    - Pipeline of stream: Source -> intermediate operation -> terminal operation
-        - Intermediate operation: not evaluated until we chain it with terminal operation.
+- A sequence of elements supporting sequential and parallel aggregate operations.
+            
+- Pipeline of stream: Source -> intermediate operation -> terminal operation
+    - Intermediate operation: not evaluated until we chain it with terminal operation.
 
 ```java
 Stream.map(), Stream.filter(), Stream.limit() 
 ```
 
-        - Terminal operation: responsible for giving final output for a stream in operation.
+- Terminal operation: responsible for giving final output for a stream in operation.
         
 ```java
 findAny(), allMatch(), forEach() 
 ```        
 
-    - Stream example:    
+- Stream example:    
 
 ```java
 // stream example
