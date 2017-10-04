@@ -4,7 +4,8 @@
 [Java_8_recipes git repo](https://github.com/kousen/java_8_recipes)
 
 #### Lambda Expression
-    * lambda can access local variable outside of it owns scope but it can not modify it. 
+    - lambda can access local variable outside of it owns scope but it can not modify it. 
+    
     ```java
     // Sum using loop (iterative and shared mutable state)
     // What we usually do (not so good)
@@ -36,7 +37,7 @@
     ```
 
 #### Functional interface
-    * only a single abstract method in it. i.e: `Runnable` is functional interface because `void	run()` is the only abstract method in it.
+    - only a single abstract method in it. i.e: `Runnable` is functional interface because `void	run()` is the only abstract method in it.
     * lambda can only assigned to functional interfaces
     * The `@FunctionalInterface` annotation is optional, therefore it doesn't need to be annotate for interface.
     * All functional interface belong to `java.util.function package`.
@@ -46,8 +47,9 @@
     @FunctionalInterface
     public interface Runnable
     ```
-    * Types of interface from `java.util.function` package
+    - Types of interface from `java.util.function` package
         - Supplier: no argument and return a single result
+
         ```java
         // Is a supplier
         public Integer getCount(){
@@ -60,6 +62,7 @@
         Its instance method reference `myClass::getCount` is an instance of `Supplier<Integer>`
 
         - Consumer: takes arguments and returns nothing
+
         ```java
         public void setCount(int count){
             this.count = count;
@@ -68,6 +71,7 @@
         Its instance method reference `myClass::setCount` is an instance of `Consumer<Integer>` and `IntConsumer`.
 
         - Function: takes an argument of one type, and returns another. Also call a transformation.
+
         ```java
         public Integer getCount(){
             return this.count;
@@ -76,6 +80,7 @@
         Its class method reference `MyClass::getCount` is an instance of `Function<MyClass,Integer>` and `ToIntFunction<MyClass>`.
 
         - Predicate: evaluate a condition and return boolean.
+
         ```java
         // example 1
         Predicate<Employee> isAgeMoreThan(Integer age) {
@@ -86,6 +91,7 @@
         ```
     * Method Reference: shorthand syntax for a lambda expression that executes just ONE method.
         - can call with static, instance method and also constructor method reference `ClassName::new` (Supplier)
+
     ```java
     // Syntax: Object :: methodName
     // what we usually do
@@ -93,8 +99,10 @@
     // method reference
     Consumer<String> c = System.out::println;
     ```
+
 #### Java 8 Interface
     * can have default method and static method
+
     ```java
     @FunctionalInterface
     public interface MyInterface {
