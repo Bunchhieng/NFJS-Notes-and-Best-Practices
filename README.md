@@ -1,9 +1,9 @@
 # NFJS notes and best practices
 
-### Java 8 Recipes
+## Java 8 Recipes
 [Java_8_recipes git repo](https://github.com/kousen/java_8_recipes)
 
-- Lambda Expression
+#### Lambda Expression
     * lambda can access local variable outside of it owns scope but it can not modify it. 
     ```java
     // Sum using loop (iterative and shared mutable state)
@@ -35,7 +35,7 @@
     (s1, s2) -> Integer.compare(s1.length(), s2.length())
     ```
 
-- Functional interface
+#### Functional interface
     * only a single abstract method in it. i.e: `Runnable` is functional interface because `void	run()` is the only abstract method in it.
     * lambda can only assigned to functional interfaces
     * The `@FunctionalInterface` annotation is optional, therefore it doesn't need to be annotate for interface.
@@ -93,7 +93,7 @@
     // method reference
     Consumer<String> c = System.out::println;
     ```
-- Java 8 Interface
+#### Java 8 Interface
     * can have default method and static method
     ```java
     @FunctionalInterface
@@ -114,16 +114,38 @@
     - Conflict between `class` methods and `interface` (default or static) method
         - class methods always win (overrided)
 
-- `Stream()`
+#### `Stream()` is LAZY
 
+    - A sequence of elements supporting sequential and parallel aggregate operations.
+              
+    - Pipeline of stream: Source -> intermediate operation -> terminal operation
+        - Intermediate operation: not evaluated until we chain it with terminal operation.
 
-### Streaming architecture using Kafka
+        ```java
+        Stream.map(), Stream.filter(), Stream.limit() 
+        ```
 
-### More functional Java and Java Slang (VAVR)
+        - Terminal operation: responsible for giving final output for a stream in operation.
+        
+        ```java
+        findAny(), allMatch(), forEach() 
+        ```        
+          
+    ```java
+    // stream example
+    List<String> strings = Arrays.asList("yolo", "swag", "icecream");
 
-### <? extends Generic> in Java
+    strings.stream()
+           .filter(s -> s.length % 2 == 0) // intermediate operation
+           .collect(Collectors.toList());  // terminal operation
+    ```
+## Streaming architecture using Kafka
 
-### Machine learning with Tensorflow
+## More functional Java and Java Slang (VAVR)
 
-### High computing big data on JVM
+## <? extends Generic> in Java
+
+## Machine learning with Tensorflow
+
+## High computing big data on JVM
 
