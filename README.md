@@ -5,7 +5,7 @@
 
 #### Lambda Expression
     - lambda can access local variable outside of it owns scope but it can not modify it. 
-    
+
     ```java
     // Sum using loop (iterative and shared mutable state)
     // What we usually do (not so good)
